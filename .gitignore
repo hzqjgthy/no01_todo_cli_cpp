@@ -1,0 +1,33 @@
+# 构建产物
+/build/
+/bin/
+/out/
+*.o
+*.obj
+*.exe
+*.pdb
+*.ilk
+
+# CMake 残留
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+Testing/
+compile_commands.json
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# 调试残留
+core
+core.*
+*.dSYM/
+
+# 本地数据
+*.local.json
+/tmp/
