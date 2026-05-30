@@ -49,9 +49,18 @@ int parse_id(const std::string& s) {
 }
 
 int cmd_add(const std::vector<std::string>& args) {
-    (void)args;
-    std::cerr << "cmd_add: 尚未实现\n";
-    return 1;
+    if (args.empty()) {
+        std::cerr << "用法: todo add <标题>\n";
+        return 1;
+    }
+    std::string title = args[0];
+    for (size_t i = 1; i < args.size(); ++i) title += ' ' + args[i];
+
+    auto list = todo::store::load();
+    auto t    = list.add(title);
+    todo::store::save(list);
+    std::cout << "已添加 #" << t.id << ": " << t.title << '\n';
+    return 0;
 }
 
 int cmd_list() {
