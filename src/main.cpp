@@ -64,9 +64,23 @@ int cmd_add(const std::vector<std::string>& args) {
 }
 
 int cmd_list() {
-    std::cerr << "cmd_list: 尚未实现\n";
-    return 1;
+    auto list = todo::store::load();
+    if (list.tasks().empty()) {
+        std::cout << "（空）使用 `todo add <标题>` 添加你的第一个任务\n";
+        return 0;
+    }
+    std::cout << "ID  状态  创建时间          标题\n";
+    std::cout << "--  ----  ----------------  ----\n";
+    for (const auto& t : list.tasks()) {
+        std::cout << std::left
+                  << std::setw(4) << t.id
+                  << (t.done ? "[x]   " : "[ ]   ")
+                  << std::setw(18) << todo::format_time(t.created_at)
+                  << t.title << '\n';
+    }
+    return 0;
 }
+
 
 int cmd_done(const std::vector<std::string>& args) {
     if (args.size() != 1) { std::cerr << "用法: todo done <id>\n"; return 1; }
