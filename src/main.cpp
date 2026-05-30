@@ -95,6 +95,9 @@ int cmd_done(const std::vector<std::string>& args) {
     return 0;
 }
 
+
+
+
 int cmd_rm(const std::vector<std::string>& args) {
     if (args.size() != 1) { std::cerr << "用法: todo rm <id>\n"; return 1; }
     int  id   = parse_id(args[0]);
@@ -107,6 +110,9 @@ int cmd_rm(const std::vector<std::string>& args) {
     std::cout << "已删除 #" << id << '\n';
     return 0;
 }
+
+
+
 
 int cmd_clear() {
     auto list = todo::store::load();
