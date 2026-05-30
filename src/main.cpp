@@ -49,36 +49,14 @@ int parse_id(const std::string& s) {
 }
 
 int cmd_add(const std::vector<std::string>& args) {
-    if (args.empty()) {
-        std::cerr << "用法: todo add <标题>\n";
-        return 1;
-    }
-    std::string title = args[0];
-    for (size_t i = 1; i < args.size(); ++i) title += ' ' + args[i];
-
-    auto list = todo::store::load();
-    auto t    = list.add(title);
-    todo::store::save(list);
-    std::cout << "已添加 #" << t.id << ": " << t.title << '\n';
-    return 0;
+    (void)args;
+    std::cerr << "cmd_add: 尚未实现\n";
+    return 1;
 }
 
 int cmd_list() {
-    auto list = todo::store::load();
-    if (list.tasks().empty()) {
-        std::cout << "（空）使用 `todo add <标题>` 添加你的第一个任务\n";
-        return 0;
-    }
-    std::cout << "ID  状态  创建时间          标题\n";
-    std::cout << "--  ----  ----------------  ----\n";
-    for (const auto& t : list.tasks()) {
-        std::cout << std::left
-                  << std::setw(4) << t.id
-                  << (t.done ? "[x]   " : "[ ]   ")
-                  << std::setw(18) << todo::format_time(t.created_at)
-                  << t.title << '\n';
-    }
-    return 0;
+    std::cerr << "cmd_list: 尚未实现\n";
+    return 1;
 }
 
 int cmd_done(const std::vector<std::string>& args) {
