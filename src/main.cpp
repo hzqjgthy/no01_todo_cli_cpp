@@ -83,29 +83,15 @@ int cmd_list() {
 
 
 int cmd_done(const std::vector<std::string>& args) {
-    if (args.size() != 1) { std::cerr << "用法: todo done <id>\n"; return 1; }
-    int  id   = parse_id(args[0]);
-    auto list = todo::store::load();
-    if (!list.mark_done(id)) {
-        std::cerr << "错误: task not found (id=" << id << ")\n";
-        return 1;
-    }
-    todo::store::save(list);
-    std::cout << "已完成 #" << id << '\n';
-    return 0;
+    (void)args;
+    std::cerr << "cmd_done: 尚未实现\n";
+    return 1;
 }
 
 int cmd_rm(const std::vector<std::string>& args) {
-    if (args.size() != 1) { std::cerr << "用法: todo rm <id>\n"; return 1; }
-    int  id   = parse_id(args[0]);
-    auto list = todo::store::load();
-    if (!list.remove(id)) {
-        std::cerr << "错误: task not found (id=" << id << ")\n";
-        return 1;
-    }
-    todo::store::save(list);
-    std::cout << "已删除 #" << id << '\n';
-    return 0;
+    (void)args;
+    std::cerr << "cmd_rm: 尚未实现\n";
+    return 1;
 }
 
 int cmd_clear() {
